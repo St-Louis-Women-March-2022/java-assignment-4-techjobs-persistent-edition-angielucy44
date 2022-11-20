@@ -6,7 +6,6 @@ import javax.persistence.*;
 public class Job{
 
     @Id
-    @GeneratedValue
     private int id;
 
     private String name;
