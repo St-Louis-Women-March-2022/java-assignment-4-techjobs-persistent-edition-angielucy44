@@ -20,6 +20,8 @@ public class SkillController {
     @Autowired
     private SkillRepository skillRepository;
 
+
+    //Added index method to return a list of all of the skills in the database
         @GetMapping("")
         public String index (Model model) {
            model.addAttribute("title", "All Skills");
@@ -35,6 +37,9 @@ public class SkillController {
             return "skills/add";
     }
 
+    //this method is used so that if there are any errors or invalid entries into the fields
+    //it sends the user back to the form to try again
+    //added code to save the object if it is valid
     @PostMapping("add")
     public String processAddSkillForm(@ModelAttribute @Valid Skill newSkill,
                                       Errors errors, Model model) {
@@ -44,6 +49,10 @@ public class SkillController {
             skillRepository.save(newSkill);
             return "redirect:./";
     }
+
+    //this method is used to view an individual skill object
+    //uses skill object's id field to get the correct info
+    //from SkillRepository
     @GetMapping("view/{skillId}")
     public String displayViewSkill(Model model, @PathVariable int skillId) {
 

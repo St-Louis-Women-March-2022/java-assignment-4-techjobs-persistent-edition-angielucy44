@@ -23,6 +23,8 @@ import java.util.List;
 @RequestMapping(value = "list")
 public class ListController {
 
+    //Added fields for EmployerRepository and SkillRepository
+    //Added Autowired annotations
     @Autowired
     private JobRepository jobRepository;
 
@@ -42,6 +44,8 @@ public class ListController {
         columnChoices.put("skill", "Skill");
 
     }
+
+    //Added model attributes to pass employer & skill data into the list.html template
 
     @RequestMapping("")
     public String list(Model model) {

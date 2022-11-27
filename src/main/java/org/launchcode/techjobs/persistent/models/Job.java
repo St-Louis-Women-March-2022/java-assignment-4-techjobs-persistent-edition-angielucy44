@@ -4,6 +4,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
+
+//updated class to inherit from AbstractEntity
+//removed name and id fields from this class
 @Entity
 public class Job extends AbstractEntity{
 

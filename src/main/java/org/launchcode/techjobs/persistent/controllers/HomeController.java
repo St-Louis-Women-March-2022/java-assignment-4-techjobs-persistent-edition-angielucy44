@@ -22,6 +22,8 @@ import java.util.Optional;
 @Controller
 public class HomeController {
 
+    //Added all repositories as fields
+    //Added Autowired annotations
     @Autowired
     private EmployerRepository employerRepository;
 
@@ -31,6 +33,8 @@ public class HomeController {
     @Autowired
     private JobRepository jobRepository;
 
+
+    //index shows all jobs bc returning index which is html in index template
     @RequestMapping("")
     public String index(Model model) {
 
