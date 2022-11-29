@@ -59,9 +59,13 @@ public class HomeController {
         return "add";
     }
 
+    //@RequestParam annotation used to extract input data
+    //(List<Employer>) is in () bc it is casting. Casting means it is using the findAll() method
+    //to get the data and make it work in Java. It is telling Java the data type of the data
+    //we are expecting.
     @PostMapping("add")
     public String processAddJobForm(@ModelAttribute @Valid Job newJob,
-                                    Errors errors, Model model, @RequestParam int employerId, @RequestParam List<Integer> skills) {
+                                    Errors errors, Model model, @RequestParam int employerId, @RequestParam List<Integer> skills ) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Job");
@@ -69,11 +73,16 @@ public class HomeController {
             model.addAttribute("employers", employers);
             return "add";
         }
-        Optional<Employer> optEmployer = employerRepository.findById(employerId);
-        if (optEmployer.isPresent()) {
-            Employer employer = optEmployer.get();
-            newJob.setEmployer(employer);
-        }
+        //Optional<Employer> optEmployer = employerRepository.findById(employerId);
+       // if (optEmployer.isPresent()) {
+           // Employer employer = optEmployer.get();
+            //newJob.setEmployer(employer);
+
+            Employer employer = employerRepository.findById(employerId).orElse(new Employer());
+            //if (optEmployer.isPresent()) {
+              //  Employer employer = optEmployer.get();
+                newJob.setEmployer(employer);
+       //}
         List<Skill> skillObjs = (List<Skill>) skillRepository.findAllById(skills);
         newJob.setSkills(skillObjs);
 
