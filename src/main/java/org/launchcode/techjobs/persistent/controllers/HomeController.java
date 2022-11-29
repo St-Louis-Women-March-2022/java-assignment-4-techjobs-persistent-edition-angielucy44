@@ -35,6 +35,7 @@ public class HomeController {
 
 
     //index shows all jobs bc returning index which is html in index template
+    //jobs shows all jobs bc of findAll() method
     @RequestMapping("")
     public String index(Model model) {
 
