@@ -15,3 +15,6 @@ from skill
 inner join job_skills on skill_id = job_skills.skills_id
 where job_skills.jobs_id is not null
 order by name asc;
+
+--part 4 to make sql query work in sql you will need to make line 15 say "on skills_id"
+--with skills plural. It has to be singular in order to pass autograder
